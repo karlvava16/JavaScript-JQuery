@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+}
+
+#schedule_block {
+  background-color: red;
+  width: 800px;
+  height: 500px;
+  
+}
