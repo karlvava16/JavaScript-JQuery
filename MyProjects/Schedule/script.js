@@ -1,7 +1,29 @@
-function StartSchedule()
+function whichDate()
 {
   const currentDate = new Date()
-  console.log(currentDate.getMonth())
+
+  let result = confirm("Ввести дату?")
+  if(result == true)
+  {
+    let year = prompt("Введите год:")
+    let month = prompt("Введите месяц:")
+    let day = prompt("Введите день:")
+
+    currentDate.setYear(year)
+    currentDate.setMonth(month)
+    currentDate.setDate(day)
+    StartSchedule(currentDate)
+z
+  } else {
+    StartSchedule(currentDate)
+  }
+}
+
+function StartSchedule(currentDate)
+{
+  alert(currentDate)
+
+  console.log(currentDate)
   setBgImage(currentDate.getMonth())
 
 
@@ -11,24 +33,20 @@ function StartSchedule()
 function drawSchedule(currentDate)
 {
   let temp_date = new Date(currentDate.toUTCString())
-  console.log(typeof(temp_date))
   temp_date.setDate(1)
-  console.log(temp_date.getDay())
   if (temp_date.getDay() != 1)
   {
     temp_date.setDate(temp_date.getDate() - ((temp_date.getDay() === 0 ? 6 : temp_date.getDay() - 1)))
   }
-  console.log(temp_date)
 
 
 
   let bgSchedule = document.getElementById("schedule_block")
 
-  let count = 0
+  let count = 1
 
   while (temp_date.getMonth() <= currentDate.getMonth() || count % 7 != 0) 
   {
-    count++
 
     let child = document.createElement("div")
     child.className = "sup"
@@ -51,6 +69,9 @@ function drawSchedule(currentDate)
 
     // increase day
     console.log(`${count} `  + temp_date)
+
+    count++
+
   }
 }
 
