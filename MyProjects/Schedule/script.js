@@ -1,6 +1,6 @@
 function StartSchedule()
 {
-  let currentDate = new Date()
+  const currentDate = new Date()
   console.log(currentDate.getMonth())
   setBgImage(currentDate.getMonth())
 
@@ -10,8 +10,8 @@ function StartSchedule()
 
 function drawSchedule(currentDate)
 {
-  let temp_date = JSON.parse(JSON.stringify(currentDate))
-  console.log(temp_date)
+  let temp_date = new Date(currentDate.toUTCString())
+  console.log(typeof(temp_date))
   temp_date.setDate(1)
   console.log(temp_date.getDay())
   if (temp_date.getDay() != 1)
@@ -24,17 +24,33 @@ function drawSchedule(currentDate)
 
   let bgSchedule = document.getElementById("schedule_block")
 
-  while (temp_date.getMonth() <= currentDate.getMonth() || temp_date.getYear() <= currentDate.getYear()) 
+  let count = 0
+
+  while (temp_date.getMonth() <= currentDate.getMonth() || count % 7 != 0) 
   {
+    count++
+
     let child = document.createElement("div")
-    child.className = "test"
+    child.className = "sup"
+    const newText = document.createTextNode(temp_date.getDate());
+    child.appendChild(newText)
+
+    if (temp_date.getMonth() != currentDate.getMonth())
+    {
+      child.classList.add("wrongMonth")
+    }
+    else if (temp_date.getDay() === 0 || temp_date.getDay() === 6)
+    {
+      child.classList.add("weekend_day")
+    }
+
+
     bgSchedule.appendChild(child)
 
+    temp_date.setDate(temp_date.getDate() + 1);
 
     // increase day
-    temp_date.setDate(currentDate.getDate() + 1);
-    console.log("1) "  + temp_date)
-    console.log("2) " + currentDate)
+    console.log(`${count} `  + temp_date)
   }
 }
 

@@ -10,9 +10,45 @@ body{
 
 #schedule_block {
 
-  background-color: red;
   width: 768px;
   height: 512px;
-  scale: 1.5;
+  scale: 1;
   font-size: 20;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sup {
+  width: calc(100% / 7); /* Set width to ensure 7 items in a row */
+  box-sizing: border-box;
+  border: 1px solid grey; /* For visualization */
+  font-size: 50px;
+  text-align: center;
+  font-weight: 800;
+
+  color: white;
+  text-shadow: 
+  -1px -1px 0 #000,  
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000; /* Multiple shadows to create an outline effect */
+}
+
+
+.weekdays {
+  background-color: orange;
+  color: rgb(105, 70, 6);
+}
+
+.weekend {
+  background-color: red;
+  color: rgb(111, 5, 5);
+}
+
+.weekend_day {
+  color: red;
+}
+
+.wrongMonth {
+  color: grey;
 }
