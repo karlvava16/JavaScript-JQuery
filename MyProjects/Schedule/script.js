@@ -8,12 +8,11 @@ function whichDate()
     let year = prompt("Введите год:")
     let month = prompt("Введите месяц:")
     let day = prompt("Введите день:")
-
+    month = month - 1
     currentDate.setYear(year)
     currentDate.setMonth(month)
     currentDate.setDate(day)
     StartSchedule(currentDate)
-z
   } else {
     StartSchedule(currentDate)
   }
@@ -45,7 +44,7 @@ function drawSchedule(currentDate)
 
   let count = 1
 
-  while (temp_date.getMonth() <= currentDate.getMonth() || count % 7 != 0) 
+  while (temp_date.getMonth() <= currentDate.getMonth() || count % 6 != 0) 
   {
 
     let child = document.createElement("div")
@@ -56,6 +55,10 @@ function drawSchedule(currentDate)
     if (temp_date.getMonth() != currentDate.getMonth())
     {
       child.classList.add("wrongMonth")
+    }
+    else if (temp_date.getDate() === currentDate.getDate() && temp_date.getMonth() === currentDate.getMonth())
+    {
+      child.classList.add("currentDay")
     }
     else if (temp_date.getDay() === 0 || temp_date.getDay() === 6)
     {
