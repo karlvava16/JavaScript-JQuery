@@ -44,7 +44,7 @@ function drawSchedule(currentDate)
 
   let count = 1
 
-  while (temp_date.getMonth() <= currentDate.getMonth() || count % 6 != 0) 
+  while ((temp_date.getMonth() <= currentDate.getMonth() && temp_date.getYear() <= currentDate.getYear()) || count % 6 != 0) 
   {
 
     let child = document.createElement("div")
