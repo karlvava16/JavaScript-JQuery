@@ -8,6 +8,48 @@
     <title>Events</title>
 </head>
 <body>
-    
+    <ul id="tree">
+        <li class="element">This PS
+            <ul class="inner">
+                <li class="element">Local Disk (C:)
+                <ul class="inner2">
+                    <li class="element">Program Files</li>
+                    <li class="element">Users</li>
+                    <li class="element">Windows</li>
+                </ul>
+                </li>
+                <li class="element">Local Disk (D:)
+                <ul class="inner2">
+                    <li class="element">Folder 1</li>
+                    <li class="element">Folder 2</li>
+                    <li class="element">Folder 3</li>
+                </ul>
+                </li>
+                <li class="element">Local Disk (E:)
+                <ul class="inner2">
+                    <li class="element">Folder 1</li>
+                    <li class="element">Folder 2</li>
+                    <li class="element">Folder 3</li>
+                </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+   <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        var elements = document.querySelectorAll('.element');
+        elements.forEach(function(element) {
+            element.addEventListener('click', function(event) {
+                if (!event.target.closest('.inner')) {
+                    var innerList = this.querySelector('.inner');
+                    if (innerList) {
+                        innerList.classList.toggle('show');
+                    }
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Слушатели событий</title>
+    <style type="text/css">
+        a.menu:hover {
+            background-color: coral;
+        }
+
+        a.menu:active {
+            border: inset 3px darkorange;
+        }
+
+        a.menu {
+            display: block;
+            width: 100px;
+            background-color: #ff8c00;
+            color: #ffdead;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            padding: 3px;
+            margin: 5px;
+            border: outset 3px darkorange;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Обработка событий мыши</h2>
+    <div style="width:300px;height:300px;border: 1px solid black" id="div1"></div>
+    <a class='menu' href='#' id="btn"> Добавить обработчик </a>
+    <script>
+
+        function Handler(e) {
+            div.innerHTML = "type: " + e.type + "<br />";
+            div.innerHTML += "screenX: " + e.screenX + "<br />";
+            div.innerHTML += "screenY: " + e.screenY + "<br />";
+            div.innerHTML += "clientX: " + e.clientX + "<br />";
+            div.innerHTML += "clientY: " + e.clientY + "<br />";
+        }
+
+        function mouseUpHandler(e) {
+            div.style.backgroundColor = "#FFFFFF";
+            div.style.color = "#000000";
+        }
+
+        function mouseDownHandler(e) {
+            div.style.backgroundColor = "#000000";
+            div.style.color = "#FFFFFF";
+        }
+
+        function clickHandler(e) {
+            if (flag) {
+                div.addEventListener("mousedown", mouseDownHandler);
+                div.addEventListener("mouseup", mouseUpHandler);
+                btn.innerText = "Удалить обработчик";
+            }
+            else {
+                div.removeEventListener("mousedown", mouseDownHandler);
+                div.removeEventListener("mouseup", mouseUpHandler);
+                btn.innerText = "Добавить обработчик";
+            }
+            flag = !flag;
+        }
+
+        let div = document.getElementById("div1");
+        let btn = document.getElementById("btn");
+        div.addEventListener("mousedown", Handler);
+        div.addEventListener("mouseup", Handler);
+        btn.addEventListener("click", clickHandler);
+        let flag = true;
+
+    </script>
+</body>
+
+</html>

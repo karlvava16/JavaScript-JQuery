@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Обработка событий</title>
+    <style type="text/css">
+        #example {
+            display: none;
+            padding: 5px;
+            background-color: #dddddd;
+        }
+    </style>
+    <script>
+        function display(e) {
+            let elem = document.getElementById("example");
+            if (elem.style.display != "block") {
+                elem.style.display = "block";
+                e.target.innerText = "Скрыть";
+            }
+            else {
+                elem.style.display = "none";
+                e.target.innerText = "Отобразить";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <a href="#" onclick="display(event)">Отобразить</a> пример
+    <pre id="example">
+            #include &lt;iostream&gt; 
+            using namespace std;
+            void main() 
+            {
+                cout << "Hello, world!";
+            }
+        </pre>
+</body>
+
+</html>

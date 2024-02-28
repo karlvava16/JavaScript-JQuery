@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Свойства обработчиков событий</title>
+</head>
+
+<body>
+    <h2>Обработка событий мыши</h2>
+    <div style="width:300px;height:300px;border: 1px solid black" id="div1"></div>
+    <script>
+        function mouseDownHandler(e) {
+            div.innerHTML = e.type;
+            div.style.backgroundColor = "#000000";
+            div.style.color = "#FFFFFF";
+        }
+        function mouseUpHandler(e) {
+            div.innerHTML = e.type;
+            div.style.backgroundColor = "#FFFFFF";
+            div.style.color = "#000000";
+        }
+        let div = document.getElementById("div1");
+        div.onmousedown = mouseDownHandler;
+        div.onmouseup = mouseUpHandler;
+    </script>
+</body>
+
+</html>

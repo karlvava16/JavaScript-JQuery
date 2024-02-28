@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Обработка событий</title>
+</head>
+
+<body onkeydown="evtHandler(event)" onload="alert('Страница загружена!')" onkeyup="evtHandler(event)">
+    <div style="width:300px;height:300px;border: 1px solid black" onmousemove="evtHandler(event)"
+        onmousedown="evtHandler(event)" onmouseup="evtHandler(event)" ondblclick="evtHandler(event)"
+        onmousewheel="evtHandler(event)" oncontextmenu="evtHandler(event)"></div>
+    <table style="border: 1px solid black; width:300px">
+        <tr>
+            <td>Тип события:</td>
+            <td><span id="evtType"></span></td>
+        </tr>
+        <tr>
+            <td>Координаты мыши:</td>
+            <td><span id="mouse"></span></td>
+        </tr>
+        <tr>
+            <td>Кнопка мыши:</td>
+            <td><span id="btn"></span></td>
+        </tr>
+    </table>
+
+    <script>
+        function evtHandler(e) {
+            document.getElementById("evtType").innerText = e.type;
+            document.getElementById("mouse").innerText = e.clientX + ",  " + e.clientY;
+            switch (e.which) {
+                case 1: document.getElementById("btn").innerText = "левая";
+                    break;
+                case 2: document.getElementById("btn").innerText = "средняя";
+                    break;
+                case 3: document.getElementById("btn").innerText = "правая";
+                    break;
+            }
+
+        }
+    </script>
+</body>
+
+</html>

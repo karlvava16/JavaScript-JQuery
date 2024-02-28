@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Слушатели событий</title>
+</head>
+
+<body onload="alert('load')">
+    <h2>Обработка событий мыши</h2>
+    <div style="width:300px;height:300px;border: 1px solid black" id="div1"></div>
+    <img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0">
+    <script>
+        function mouseUpHandler(e) {
+            div.innerHTML = e.type;
+            div.style.backgroundColor = "#FFFFFF";
+            div.style.color = "#000000";
+        }
+
+        let div = document.getElementById("div1");
+        div.addEventListener("mousedown", function (e) {
+            div.innerHTML = e.type;
+            div.style.backgroundColor = "#000000";
+            div.style.color = "#FFFFFF";
+        });
+        div.addEventListener("mouseup", mouseUpHandler);
+
+        function ready() {
+            alert('DOM готов');
+
+            // изображение ещё не загружено (если не было закешировано), так что размер будет 0x0
+            alert(`Размер изображения: ${img.offsetWidth}x${img.offsetHeight}`);
+        }
+        document.addEventListener("DOMContentLoaded", ready);
+
+    </script>
+</body>
+
+</html>

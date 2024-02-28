@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Drag&Drop</title>
+</head>
+
+<body>
+    <div id="car"
+        style="position:absolute;left:100px;top:100px;background-image:url(./IMG/lamborghini.jpg);width:200px;height:150px">
+    </div>
+    <script>
+        let car = document.getElementById("car");
+        car.addEventListener("mousedown", DownHandler);
+        car.addEventListener("mouseup", UpHandler);
+        document.body.addEventListener("mousemove", MoveHandler);
+        let flag = false, X, Y;
+
+        function DownHandler(ev) {
+            flag = true;
+            X = ev.offsetX;
+            Y = ev.offsetY;
+        }
+        function UpHandler(ev) {
+            flag = false;
+        }
+        function MoveHandler(ev) {
+            if (flag) {
+                car.style.left = ev.clientX - X + "px";
+                car.style.top = ev.clientY - Y + "px";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+  ul {
+    cursor: pointer;
+  }
+
+  .inner {
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+
+  ul li :hover {
+    font-weight: bold;
+  }

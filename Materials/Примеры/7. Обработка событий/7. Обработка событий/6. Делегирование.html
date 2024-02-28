@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Делегирование</title>
+</head>
+<body>
+    <div style="width:300px;height:300px; border: 1px solid black" id="div1" data-action="blue">
+        <div style="width:200px;height:200px; border: 1px solid black" id="div2" data-action="yellow">
+            <div style="width:100px;height:100px; border: 1px solid black" id="div3" data-action="magenta">
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function Handler(e)
+    {
+        e.target.style.backgroundColor = e.target.getAttribute('data-action');       
+    }
+    let div = document.getElementById("div1");
+    div.addEventListener("click", Handler);
+    </script>
+</body>
+</html>
+
+

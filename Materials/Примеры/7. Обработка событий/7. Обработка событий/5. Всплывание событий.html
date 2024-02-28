@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Обработка событий</title>
+</head>
+
+<body>
+    <div style="width:300px;height:300px;background-color:blue" id="div1">
+        <div style="width:200px;height:200px;background-color:yellow" id="div2">
+            <div style="width:100px;height:100px;background-color:magenta" id="div3">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function Handler(e) {
+            alert(e.currentTarget.style.backgroundColor);
+            e.stopPropagation();
+        }
+        for (let i = 1; i <= 3; i++) {
+            let div = document.getElementById("div" + i);
+            div.addEventListener("click", Handler, false);
+        }
+    </script>
+</body>
+
+</html>

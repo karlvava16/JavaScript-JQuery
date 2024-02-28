@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Обработка событий</title>
+</head>
+
+<body style="background-color:orange">
+    <div style="width:400px;height:284px;background-image:url(./IMG/flower.jpg)" id="div1"></div>
+    <span id="tooltip" style="visibility: hidden; position: absolute;color:white;font-weight:bold;font-family:Verdana">
+        Всплывающая подсказка
+    </span>
+    <script type="text/javascript">
+        let id = null;
+        let tooltip = document.getElementById('tooltip');
+        let div = document.getElementById('div1');
+        div.addEventListener("mousemove", moveTooltip);
+        div.addEventListener("mouseover", timeOutfunc);
+        div.addEventListener("mouseout", hideTooltip);
+
+        function showTooltip() {
+            tooltip.style.visibility = 'visible';
+        }
+
+        function moveTooltip(ev) {
+            tooltip.style.left = ev.clientX + 10 + "px";
+            tooltip.style.top = ev.clientY + 10 + "px";
+        }
+
+        function hideTooltip(ev) {
+            clearTimeout(id);
+            tooltip.style.visibility = 'hidden';
+        }
+
+        function timeOutfunc(ev) {
+            id = setTimeout('showTooltip()', 1000);
+        }
+    </script>
+</body>
+
+</html>
