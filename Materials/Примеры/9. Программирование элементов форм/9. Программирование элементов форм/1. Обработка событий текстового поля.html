@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Текстовые поля</title>
+  <style>
+    #text_1 {
+      border: 1px solid #888888;
+      color: #888888;
+    }
+  </style>
+</head>
+
+<body>
+  <form name="testform1">
+    Текст:
+    <input type="text" name="text_1" id="text_1" value="Some text..." />
+    <input type="button" value="Ok" onclick="go()" /><br />
+    <textarea rows="5" cols="40" name="message"></textarea>
+    <div id="block"></div>
+  </form>
+  <script type="text/javascript">
+    let div = document.getElementById("block");
+
+    function go() {
+      alert("Value: " + document.forms["testform1"].elements["text_1"].value);
+      alert("Value: " + testform1.text_1.value);
+    }
+    function onfocus(event) {
+      event.target.style.border = "2px inset #DDDDDD";
+      event.target.style.color = "#000000";
+      event.target.select();
+    }
+    function onblur(event) {
+      event.target.style.border = "1px solid #888888";
+      event.target.style.color = "#888888";
+    }
+    function onchange(event) {
+
+      let val = event.target.value;
+      div.textContent = val;
+    }
+
+    function onkeypress(event) {
+      let val = String.fromCharCode(event.keyCode);
+      div.textContent += val;
+    }
+
+    function onkeydown(event) {
+      if (event.keyCode === 8) {
+
+        length = div.textContent.length;
+        div.textContent = div.textContent.substring(
+          0,
+          length - 1
+        );
+      }
+    }
+
+    let txt = document.testform1.text_1;
+    txt.addEventListener("change", onchange);
+    txt.addEventListener("blur", onblur);
+    txt.addEventListener("focus", onfocus);
+
+    let messageBox = document.testform1.message;
+    messageBox.addEventListener("keypress", onkeypress);
+    messageBox.addEventListener("keydown", onkeydown);
+  </script>
+</body>
+
+</html>

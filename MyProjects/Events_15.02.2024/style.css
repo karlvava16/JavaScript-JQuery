@@ -13,3 +13,7 @@
   .text:hover {
     font-weight: bold;
   }
+
+  .selected {
+    background-color: orange;
+  }

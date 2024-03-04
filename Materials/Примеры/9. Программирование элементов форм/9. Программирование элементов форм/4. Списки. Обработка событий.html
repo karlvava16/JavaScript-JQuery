@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Элементы форм</title>
+</head>
+
+<body>
+  <form name="form1">
+    Выберите язык программирования:
+    <select name="language">
+      <option value="C#">C#</option>
+      <option value="Java">Java</option>
+      <option value="C++">C++</option>
+      <option value="JavaScript">JavaScript</option>
+    </select>
+    <p><input type="text" name="textInput" placeholder="Введите язык" /></p>
+    <p>
+      <input type="button" name="addButton" value="Добавить" />
+      <input type="button" name="removeButton" value="Удалить" />
+    </p>
+
+    Выберите web-технологию:<br /><br />
+    <select name="web" size="5">
+      <option value="HTML5">Язык разметки гипертекста HTML5</option>
+      <option value="CSS3">Каскадные таблицы стилей CSS3</option>
+      <option value="JavaScript">Язык клиентских сценариев JavaScript</option>
+      <option value="PHP">Язык серверных сценариев PHP</option>
+      <option value="ASP.NET">Серверная технология ASP.NET</option>
+      <option value="Angular">Клиентский фреймворк Angular</option>
+      <option value="React">Клиентская библиотека React</option>
+    </select><br /><br />
+    <input type="submit" name="send" value="Отправить" onClick="SendServer()" /><br /><br />
+  </form>
+
+  <script>
+    function sendServer() {
+      event.preventDefault();
+      alert(form1.language.options[form1.language.selectedIndex].text);
+    }
+    function changeOption() {
+      let index = form1.web.selectedIndex;
+      alert("Index: " + form1.web.options[index].index);
+      alert("Text: " + form1.web.options[index].text);
+      alert("Value: " + form1.web.options[index].value);
+    }
+
+    function addOption() {
+      let text = form1.textInput.value;
+      let newOption = new Option(text, text);
+      languagesSelect.options[languagesSelect.options.length] = newOption;
+    }
+
+    function removeOption() {
+      let selectedIndex = languagesSelect.options.selectedIndex;
+      languagesSelect.options[selectedIndex] = null;
+    }
+
+    let addButton = form1.addButton;
+    let removeButton = form1.removeButton;
+    let languagesSelect = form1.language;
+    let web = form1.web;
+    let send = form1.send;
+    addButton.addEventListener("click", addOption);
+    removeButton.addEventListener("click", removeOption);
+    send.addEventListener("click", sendServer);
+    web.addEventListener("change", changeOption);
+  </script>
+</body>
+
+</html>

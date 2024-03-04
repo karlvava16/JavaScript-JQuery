@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Переключатели</title>
+</head>
+
+<body>
+  <h3>Сделайте свой выбор</h3>
+  <form name="form1">
+    <input type="radio" name="languages" value="C#" /> C#<br />
+    <input type="radio" name="languages" value="Java" /> Java<br />
+    <input type="radio" name="languages" value="C++" /> C++<br />
+    <input type="radio" name="languages" value="JavaScript" />
+    JavaScript<br />
+    <input type="radio" name="languages" value="PHP" /> PHP<br />
+    <input type="radio" name="languages" value="TypeScript" />
+    TypeScript<br /><br />
+    <input type="submit" value="Выбрать" onClick="choose(event)" />
+  </form>
+  <div id="block"></div>
+  <script>
+    function onclick(e) {
+      let div = document.getElementById("block");
+      let language = e.target.value;
+      div.textContent = "Вы выбрали: " + language;
+    }
+
+    function choose(e) {
+      let i;
+      for (i = 0; i < form1.languages.length; i++) {
+        if (form1.languages[i].checked) break;
+      }
+      if (i < form1.languages.length)
+        alert("Выбран язык: " + form1.languages[i].value);
+      else alert("Сделайте ваш выбор!");
+      e.preventDefault();
+    }
+
+    for (let i = 0; i < form1.languages.length; i++) {
+      form1.languages[i].addEventListener("click", onclick);
+    }
+  </script>
+</body>
+
+</html>
