@@ -8,48 +8,52 @@
     <title>Events</title>
 </head>
 <body>
+    <!--Task1-->
     <ul id="tree">
-        <li class="element">This PS
+        <li class="element">
+            <span class="text">This PC</span>
             <ul class="inner">
-                <li class="element">Local Disk (C:)
-                <ul class="inner2">
-                    <li class="element">Program Files</li>
-                    <li class="element">Users</li>
-                    <li class="element">Windows</li>
-                </ul>
+                <li class="element">
+                    <span class="text">Local Disk (C:)</span>
+                    <ul class="inner">
+                        <li class="element"><span class="text">Program Files</span></li>
+                        <li class="element"><span class="text">Users</span></li>
+                        <li class="element"><span class="text">Windows</span></li>
+                    </ul>
                 </li>
-                <li class="element">Local Disk (D:)
-                <ul class="inner2">
-                    <li class="element">Folder 1</li>
-                    <li class="element">Folder 2</li>
-                    <li class="element">Folder 3</li>
-                </ul>
+                <li class="element">
+                    <span class="text">Local Disk (D:)</span>
+                    <ul class="inner">
+                        <li class="element"><span class="text">Folder 1</span></li>
+                        <li class="element"><span class="text">Folder 2</span></li>
+                        <li class="element"><span class="text">Folder 3</span></li>
+                    </ul>
                 </li>
-                <li class="element">Local Disk (E:)
-                <ul class="inner2">
-                    <li class="element">Folder 1</li>
-                    <li class="element">Folder 2</li>
-                    <li class="element">Folder 3</li>
-                </ul>
+                <li class="element">
+                    <span class="text">Local Disk (E:)</span>
+                    <ul class="inner">
+                        <li class="element"><span class="text">Folder 1</span></li>
+                        <li class="element"><span class="text">Folder 2</span></li>
+                        <li class="element">
+                        <span class="text">Folder 3</span>
+                        <!--Добали еще чтоб проверить вложеность-->
+                        <ul class="inner">
+                            <li class="element"><span class="text">Program Files</span></li>
+                            <li class="element"><span class="text">Users</span></li>
+                            <li class="element"><span class="text">Windows</span></li>
+                        </ul>
+                    </ul>
                 </li>
             </ul>
         </li>
     </ul>
 
-   <script>
-        document.addEventListener("DOMContentLoaded", function() {
-        var elements = document.querySelectorAll('.element');
-        elements.forEach(function(element) {
-            element.addEventListener('click', function(event) {
-                if (!event.target.closest('.inner')) {
-                    var innerList = this.querySelector('.inner');
-                    if (innerList) {
-                        innerList.classList.toggle('show');
-                    }
-                }
-            });
-        });
-    });
+    <!--Task2-->
+    <ul id="bookList">
+        
+    </ul>
+<script>
+        firstTask();
 </script>
 </body>
 </html>

@@ -10,6 +10,6 @@
     display: block;
   }
 
-  ul li :hover {
+  .text:hover {
     font-weight: bold;
   }
