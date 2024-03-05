@@ -20,12 +20,12 @@ function firstTask()
 
 
 let previousClickedElement = null;
-const selectedElements = new Set();
+let selectedElements = new Set();
 
 function secondTask()
 { 
-    const bookList = document.getElementById('bookList');
-    const books = Array.from(bookList.getElementsByTagName('li'));
+    let bookList = document.getElementById('bookList');
+    let books = Array.from(bookList.getElementsByTagName('li'));
 
     books.forEach( function(book)
     {
@@ -36,12 +36,15 @@ function secondTask()
     });
 }
 
-  
 
-  function changeTextColor(element) {
-    if (element.classList.contains('selected')) {
+  function changeTextColor(element) 
+  {
+    if (element.classList.contains('selected')) 
+    {
       element.classList.remove('selected');
-    } else {
+    } 
+    else 
+    {
       element.classList.add('selected');
     }
   }
@@ -51,15 +54,23 @@ function secondTask()
     const isShiftPressed = event.shiftKey;
 
 
+    // check for ctr;
     if (isCtrlPressed === true) {
       console.log("ctrl")
+
       changeTextColor(element);
-      if (selectedElements.has(element)) {
+
+      if (selectedElements.has(element)) 
+      {
         selectedElements.delete(element);
-      } else {
+      }
+      else 
+      {
         selectedElements.add(element);
       }
-    } else if (isShiftPressed === true && previousClickedElement !== null) {
+    }
+    else if (isShiftPressed === true && previousClickedElement !== null)
+    {
       console.log("shift")
       let start = false;
       let end = false;
@@ -76,11 +87,13 @@ function secondTask()
           selectedElements.add(book);
         }
       }
-    } else {
+    } 
+    else 
+    {
       console.log("default click")
 
-      selectedElements.forEach(function(element) {
-        changeTextColor(element);
+      selectedElements.forEach(function(el) {
+        changeTextColor(el);
       });
 
       selectedElements.clear();
