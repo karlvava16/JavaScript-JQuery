@@ -19,6 +19,7 @@ function firstTask()
 }
 
 
+
 let previousClickedElement = null;
 let selectedElements = new Set();
 
