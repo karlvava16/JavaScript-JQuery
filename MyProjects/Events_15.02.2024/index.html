@@ -1,117 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
     <script src="script.js"></script>
     <title>Events</title>
-</head>
-<body>
+  </head>
+  <body>
     <!--Task1-->
-    <ul id="tree">
-        <li class="element">
-            <span class="text">This PC</span>
+    <ul id="tree" tabindex="1">
+      <li class="element">
+        <span class="text">This PC</span>
+        <ul class="inner">
+          <li class="element">
+            <span class="text">Local Disk (C:)</span>
             <ul class="inner">
-                <li class="element">
-                    <span class="text">Local Disk (C:)</span>
-                    <ul class="inner">
-                        <li class="element"><span class="text">Program Files</span></li>
-                        <li class="element"><span class="text">Users</span></li>
-                        <li class="element"><span class="text">Windows</span></li>
-                    </ul>
-                </li>
-                <li class="element">
-                    <span class="text">Local Disk (D:)</span>
-                    <ul class="inner">
-                        <li class="element"><span class="text">Folder 1</span></li>
-                        <li class="element"><span class="text">Folder 2</span></li>
-                        <li class="element"><span class="text">Folder 3</span></li>
-                    </ul>
-                </li>
-                <li class="element">
-                    <span class="text">Local Disk (E:)</span>
-                    <ul class="inner">
-                        <li class="element"><span class="text">Folder 1</span></li>
-                        <li class="element"><span class="text">Folder 2</span></li>
-                        <li class="element">
-                        <span class="text">Folder 3</span>
-                        <!--Добали еще чтоб проверить вложеность-->
-                        <ul class="inner">
-                            <li class="element"><span class="text">Program Files</span></li>
-                            <li class="element"><span class="text">Users</span></li>
-                            <li class="element"><span class="text">Windows</span></li>
-                        </ul>
-                    </ul>
-                </li>
+              <li class="element"><span class="text">Program Files</span></li>
+              <li class="element"><span class="text">Users</span></li>
+              <li class="element"><span class="text">Windows</span></li>
             </ul>
-        </li>
+          </li>
+          <li class="element">
+            <span class="text">Local Disk (D:)</span>
+            <ul class="inner">
+              <li class="element"><span class="text">Folder 1</span></li>
+              <li class="element"><span class="text">Folder 2</span></li>
+              <li class="element"><span class="text">Folder 3</span></li>
+            </ul>
+          </li>
+          <li class="element">
+            <span class="text">Local Disk (E:)</span>
+            <ul class="inner">
+              <li class="element"><span class="text">Folder 1</span></li>
+              <li class="element"><span class="text">Folder 2</span></li>
+              <li class="element">
+                <span class="text">Folder 3</span>
+                <!--Добали еще чтоб проверить вложеность-->
+                <ul class="inner">
+                  <li class="element">
+                    <span class="text">Program Files</span>
+                  </li>
+                  <li class="element"><span class="text">Users</span></li>
+                  <li class="element"><span class="text">Windows</span></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
     </ul>
 
-    
-<ul id="bookList">
-    <li>Книга 1</li>
-    <li>Книга 2</li>
-    <li>Книга 3</li>
-    <li>Книга 4</li>
-    <li>Книга 5</li>
-  </ul>
-  
-    
+    <!--Task2-->
+    <ul id="bookList">
+      <li>
+        "JavaScript for Kids: A Playful Introduction to Programming" by Nick
+        Morgan
+      </li>
+      <li>
+        "Eloquent JavaScript : A Modern Introduction to Programming" by Marijn
+        Haverbeke
+      </li>
+      <li>"JavaScript: The Good Parts" by Douglas Crockford</li>
+      <li>"You Don't Know JS" by Kyle Simpson</li>
+      <li>
+        "Programming JavaScript Applications: Robust Web Architecture with Node,
+        HTML5, and Moderns JS Libraries" b Eric Elliott
+      </li>
+      <li>
+        "Effective JavaScript: 68 Specific Ways to Harness the Power of
+        JavaScript" by David Herman
+      </li>
+      <li>"JavaScript: The Definitive Guide" by David Flanagan</li>
+    </ul>
 
-<script>
-        firstTask();
-         let books = document.getElementById('bookList').getElementsByTagName('li');
-            let previousClickedIndex = -1;
-            const selectedIndices = new Set();
+    <!--Task3-->
+    <div id="resizable">
+      <div id="textBlock">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan
+          consectetur massa, et fermentum risus vestibulum id. Nam euismod dui
+          vel mauris fringilla tincidunt.
+        </p>
+      </div>
+      <div id="resizer"></div>
+    </div>
 
-            for (let i = 0; i < books.length; i++) {
-                books[i].addEventListener('click', function (event) {
-                    if (!event.ctrlKey && !event.shiftKey) {
-                        clearSelection();
-                    }
+    <script>
+      // first task
+      firstTask();
 
-                    if (event.ctrlKey) {
-                        console.log("ctrl")
-                        toggleSelection(i);
-                    } else if (event.shiftKey && previousClickedIndex !== -1) {
-                        console.log("shift")
-                        selectRange(previousClickedIndex, i);
-                    } else {
-                        console.log("default click")
-                        clearSelection();
-                        console.log("clear")
-                        previousClickedIndex = i;
-                        books[i].classList.add('selected');
-                    }
-                });
-            }
+      // second task
+      let books = document
+        .getElementById("bookList")
+        .getElementsByTagName("li");
+      let previousClickedIndex = -1;
+      const selectedIndices = new Set();
 
-            function clearSelection() {
-                for (const index of selectedIndices) {
-                    books[index].classList.remove('selected');
-                }
-                selectedIndices.clear();
-            }
+      secondTask();
 
-            function toggleSelection(index) {
-                if (selectedIndices.has(index)) {
-                    books[index].classList.remove('selected');
-                    selectedIndices.delete(index);
-                } else {
-                    books[index].classList.add('selected');
-                    selectedIndices.add(index);
-                }
-            }
+      // third task
+      const resizer = document.getElementById("resizer");
+      const resizable = document.getElementById("resizable");
+      let isResizing = false;
 
-            function selectRange(start, end) {
-                const startIndex = Math.min(start, end);
-                const endIndex = Math.max(start, end);
-                for (let i = startIndex; i <= endIndex; i++) {
-                    books[i].classList.add('selected');
-                    selectedIndices.add(i);
-                }
-            }
-</script>
-</body>
+      thirdTask();
+    </script>
+  </body>
 </html>

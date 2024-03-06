@@ -1,106 +1,86 @@
-function firstTask()
-{
-  let tree = document.getElementById('tree');
-  let elements = tree.querySelectorAll('.element');
+function firstTask() {
+  let tree = document.getElementById("tree");
+  let elements = tree.querySelectorAll(".element");
 
-  elements.forEach(function (element) 
-  {
-    let text = element.querySelector('.text');
+  elements.forEach(function (element) {
+    let text = element.querySelector(".text");
 
-    text.addEventListener('click', function() 
-    {
-      let innerList = element.querySelector('.inner');
+    text.addEventListener("click", function () {
+      let innerList = element.querySelector(".inner");
       if (innerList) {
-        innerList.classList.toggle('show');
+        innerList.classList.toggle("show");
       }
     });
   });
-
 }
 
+function secondTask() {
+  for (let i = 0; i < books.length; i++) {
+    books[i].addEventListener("click", function (event) {
+      if (!event.ctrlKey && !event.shiftKey) {
+        clearSelection();
+      }
+      if (event.ctrlKey) {
+        console.log("ctrl");
+        toggleSelection(i);
+      } else if (event.shiftKey && previousClickedIndex !== -1) {
+        console.log("shift");
+        selectRange(previousClickedIndex, i);
+      } else {
+        console.log("default click");
 
-
-let previousClickedElement = null;
-let selectedElements = new Set();
-
-function secondTask()
-{ 
-    let bookList = document.getElementById('bookList');
-    let books = Array.from(bookList.getElementsByTagName('li'));
-
-    books.forEach( function(book)
-    {
-        book.addEventListener('click', function(event) 
-        {
-            handleClick(event, book, books);
-        });
+        clearSelection();
+        if (previousClickedIndex !== i) {
+          toggleSelection(i);
+          previousClickedIndex = i;
+        } else {
+          previousClickedIndex = null;
+        }
+      }
     });
+  }
 }
 
-
-  function changeTextColor(element) 
-  {
-    if (element.classList.contains('selected')) 
-    {
-      element.classList.remove('selected');
-    } 
-    else 
-    {
-      element.classList.add('selected');
-    }
+function clearSelection() {
+  for (const index of selectedIndices) {
+    books[index].classList.remove("selected");
   }
+  selectedIndices.clear();
+}
 
-  function handleClick(event, element, books) {
-    const isCtrlPressed = event.ctrlKey;
-    const isShiftPressed = event.shiftKey;
-
-
-    // check for ctr;
-    if (isCtrlPressed === true) {
-      console.log("ctrl")
-
-      changeTextColor(element);
-
-      if (selectedElements.has(element)) 
-      {
-        selectedElements.delete(element);
-      }
-      else 
-      {
-        selectedElements.add(element);
-      }
-    }
-    else if (isShiftPressed === true && previousClickedElement !== null)
-    {
-      console.log("shift")
-      let start = false;
-      let end = false;
-      for (const book of books) {
-        if (book === element || book === previousClickedElement) {
-          if (!start) {
-            start = true;
-          } else {
-            end = true;
-          }
-        }
-        if (start && !end) {
-          changeTextColor(book);
-          selectedElements.add(book);
-        }
-      }
-    } 
-    else 
-    {
-      console.log("default click")
-
-      selectedElements.forEach(function(el) {
-        changeTextColor(el);
-      });
-
-      selectedElements.clear();
-      changeTextColor(element);
-      previousClickedElement = element;
-    }
+function toggleSelection(index) {
+  if (selectedIndices.has(index)) {
+    books[index].classList.remove("selected");
+    selectedIndices.delete(index);
+  } else {
+    books[index].classList.add("selected");
+    selectedIndices.add(index);
   }
+}
 
-  
+function selectRange(start, end) {
+  const startIndex = Math.min(start, end);
+  const endIndex = Math.max(start, end);
+  for (let i = startIndex; i <= endIndex; i++) {
+    books[i].classList.add("selected");
+    selectedIndices.add(i);
+  }
+}
+
+function thirdTask() {
+  resizer.addEventListener("mousedown", (e) => {
+    isResizing = true;
+    document.addEventListener("mousemove", resize);
+    document.addEventListener("mouseup", () => {
+      isResizing = false;
+      document.removeEventListener("mousemove", resize);
+    });
+  });
+}
+
+function resize(e) {
+  if (isResizing) {
+    resizable.style.width = e.pageX - resizable.offsetLeft + "px";
+    resizable.style.height = e.pageY - resizable.offsetTop + "px";
+  }
+}
