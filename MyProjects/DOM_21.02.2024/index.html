@@ -8,9 +8,23 @@
     <title>Events</title>
   </head>
   <body>
-    
+    <label for="username">Введите имя пользователя:</label>
+    <input
+      type="text"
+      id="username"
+      oninput="validateInput(event)"
+      maxlength="50"
+    />
     <script>
-    
+      function validateInput(event) {
+    const input = event.target;
+    const inputValue = input.value;
+    const regex = /^[^\d]*$/; // Регулярное выражение для проверки буквенных символов
+
+    if (!regex.test(inputValue)) { // Если ввод содержит не буквенные символы
+        input.value = inputValue.replace(/[^a-zA-Z]/g, ''); // Удалить все символы, не являющиеся буквами
+    }
+}
     </script>
   </body>
 </html>
