@@ -1,16 +1,15 @@
-function firstTask() {
-  let tree = document.getElementById("tree");
-  let elements = tree.querySelectorAll(".element");
+function firstTask() 
+{
+  let username = document.getElementById("username");
+  username.addEventListener("oninput", function (event) 
+  {
+    const input = event.target;
+    const inputValue = input.value;
+    const regex = /^[^\d]*$/;
 
-  elements.forEach(function (element) {
-    let text = element.querySelector(".text");
-
-    text.addEventListener("click", function () {
-      let innerList = element.querySelector(".inner");
-      if (innerList) {
-        innerList.classList.toggle("show");
-      }
-    });
+    if (!regex.test(inputValue)) {
+      input.value = inputValue.replace(/[\d]/g, "");
+    }
   });
 }
 
@@ -82,5 +81,16 @@ function resize(e) {
   if (isResizing) {
     resizable.style.width = e.pageX - resizable.offsetLeft + "px";
     resizable.style.height = e.pageY - resizable.offsetTop + "px";
+  }
+}
+
+
+function validateInput(event) {
+  const input = event.target;
+  const inputValue = input.value;
+  const regex = /^[^\d]*$/;
+
+  if (!regex.test(inputValue)) {
+    input.value = inputValue.replace(/[\d]/g, "");
   }
 }
