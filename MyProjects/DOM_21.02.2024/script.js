@@ -1,43 +1,34 @@
 function firstTask() 
 {
   let username = document.getElementById("username");
-  username.addEventListener("oninput", function (event) 
-  {
+  username.addEventListener("input", function(event) {
     const input = event.target;
     const inputValue = input.value;
+
     const regex = /^[^\d]*$/;
 
-    if (!regex.test(inputValue)) {
-      input.value = inputValue.replace(/[\d]/g, "");
+    if (!regex.test(inputValue)) 
+    {
+      input.value = inputValue.replace(/\d/g, '');
     }
   });
 }
 
-function secondTask() {
-  for (let i = 0; i < books.length; i++) {
-    books[i].addEventListener("click", function (event) {
-      if (!event.ctrlKey && !event.shiftKey) {
-        clearSelection();
-      }
-      if (event.ctrlKey) {
-        console.log("ctrl");
-        toggleSelection(i);
-      } else if (event.shiftKey && previousClickedIndex !== -1) {
-        console.log("shift");
-        selectRange(previousClickedIndex, i);
-      } else {
-        console.log("default click");
+function secondTask()
+ {
+  document.querySelectorAll('.info-block').forEach(block => {
+    block.addEventListener('click', function () {
+      const content = this.querySelector('.info-content');
 
-        clearSelection();
-        if (previousClickedIndex !== i) {
-          toggleSelection(i);
-          previousClickedIndex = i;
-        } else {
-          previousClickedIndex = null;
+      document.querySelectorAll('.info-content').forEach(item => {
+        if (item !== content) {
+          item.style.display = 'none';
         }
-      }
+      });
+
+      content.style.display = content.style.display === 'none' ? 'block' : 'none';
     });
-  }
+  });
 }
 
 function clearSelection() {
