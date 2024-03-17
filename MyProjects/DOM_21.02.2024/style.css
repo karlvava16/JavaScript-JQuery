@@ -64,6 +64,9 @@ ul {
 
 /*For current task*/
 
+
+/*Task 1*/
+
 .FirstTask 
 {
   margin: 10%;
@@ -71,8 +74,22 @@ ul {
   gap: 1em;
 }
 
+/*Task 2*/
+
 .SecondTask
 {
+  width: 30%;
+  margin: 10%;
+  padding: 0;
+}
+
+.ThirdTask {
+  width: 30%;
+  margin: 10%;
+  padding: 0;
+}
+
+.ForthTask {
   width: 30%;
   margin: 10%;
   padding: 0;
@@ -91,3 +108,37 @@ ul {
 .info-content {
   display: none;
 }
+
+/*Task 3*/
+
+#textContainer {
+  width: 50%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#editTextarea {
+  width: 50%;
+  height: 200px;
+  resize: vertical;
+}
+
+
+
+/*Task 4*/
+ table {
+   border-collapse: collapse;
+   width: 100%;
+ }
+
+ th,
+ td {
+   border: 1px solid #dddddd;
+   text-align: left;
+   padding: 8px;
+ }
+
+ th {
+   cursor: pointer;
+ }

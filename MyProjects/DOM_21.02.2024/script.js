@@ -1,21 +1,18 @@
-function firstTask() 
-{
+function firstTask() {
   let username = document.getElementById("username");
-  username.addEventListener("input", function(event) {
+  username.addEventListener("input", function (event) {
     const input = event.target;
     const inputValue = input.value;
 
     const regex = /^[^\d]*$/;
 
-    if (!regex.test(inputValue)) 
-    {
+    if (!regex.test(inputValue)) {
       input.value = inputValue.replace(/\d/g, '');
     }
   });
 }
 
-function secondTask()
- {
+function secondTask() {
   document.querySelectorAll('.info-block').forEach(block => {
     block.addEventListener('click', function () {
       const content = this.querySelector('.info-content');
@@ -58,30 +55,68 @@ function selectRange(start, end) {
 }
 
 function thirdTask() {
-  resizer.addEventListener("mousedown", (e) => {
-    isResizing = true;
-    document.addEventListener("mousemove", resize);
-    document.addEventListener("mouseup", () => {
-      isResizing = false;
-      document.removeEventListener("mousemove", resize);
-    });
+  document.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && event.key === 'e') {
+      event.preventDefault();
+      const textContainer = document.getElementById('textContainer');
+      const editTextarea = document.getElementById('editTextarea');
+      const text = textContainer.textContent;
+
+      textContainer.style.display = 'none';
+      editTextarea.value = text;
+      editTextarea.style.display = 'block';
+      editTextarea.focus();
+    }
+
+    if (event.ctrlKey && event.key === 's') {
+      event.preventDefault();
+      const textContainer = document.getElementById('textContainer');
+      const editTextarea = document.getElementById('editTextarea');
+      const editedText = editTextarea.value;
+
+      editTextarea.style.display = 'none';
+      textContainer.textContent = editedText;
+      textContainer.style.display = 'block';
+    }
   });
 }
 
-function resize(e) {
-  if (isResizing) {
-    resizable.style.width = e.pageX - resizable.offsetLeft + "px";
-    resizable.style.height = e.pageY - resizable.offsetTop + "px";
+
+
+
+function sortTable(columnIndex) 
+{
+  const table = document.getElementById("dataTable");
+  const rows = Array.from(table.rows).slice(1);
+  const isNumeric = (value) => !isNaN(parseFloat(value)) && isFinite(value);
+
+  rows.sort((a, b) => {
+    const aValue = a.cells[columnIndex].textContent.trim();
+    const bValue = b.cells[columnIndex].textContent.trim();
+    let value = true;
+
+    if (value)
+    {
+      if (isNumeric(aValue) && isNumeric(bValue)) {
+        return parseFloat(aValue) - parseFloat(bValue);
+      } else {
+        return aValue.localeCompare(bValue);
+      }
+    }
+    else {
+      if (isNumeric(aValue) && isNumeric(bValue)) {
+        return parseFloat(bValue) - parseFloat(aValue);
+      } else {
+        return bValue.localeCompare(aValue);
+      }
+    }
+  });
+
+  while (table.rows.length > 1) {
+    table.deleteRow(1);
   }
-}
 
-
-function validateInput(event) {
-  const input = event.target;
-  const inputValue = input.value;
-  const regex = /^[^\d]*$/;
-
-  if (!regex.test(inputValue)) {
-    input.value = inputValue.replace(/[\d]/g, "");
-  }
+  rows.forEach(row => {
+    table.appendChild(row);
+  });
 }
