@@ -6,11 +6,84 @@
     <link rel="stylesheet" href="style.css" type="text/css" />
     <script src="script.js"></script>
     <title>Events</title>
-  </head>
-  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Nested List</title>
+    <style>
+      ul {
+        list-style-type: none;
+      }
+      ul ul {
+        margin-left: 20px;
+      }
+    </style>
+    </head>
+    <body>
+    <h1>Dynamic Nested List</h1>
+    <div>
+      <input type="radio" name="action" value="add" id="addRadio" checked>
+      <label for="addRadio">Добавить новый элемент в конец списка</label>
+      <br>
+      <input type="radio" name="action" value="insert" id="insertRadio">
+      <label for="insertRadio">Вставить новый элемент списка в заданную позицию</label>
+      <br>
+      <input type="radio" name="action" value="edit" id="editRadio">
+      <label for="editRadio">Изменить текст элемента списка</label>
+      <br>
+      <input type="radio" name="action" value="addNested" id="addNestedRadio">
+      <label for="addNestedRadio">Добавить вложенный список</label>
+      <br>
+      <input type="radio" name="action" value="delete" id="deleteRadio">
+      <label for="deleteRadio">Удалить элемент списка</label>
+      <br>
+      <input type="text" id="textInput" placeholder="Введите текст">
+      <button onclick="performAction()">Выполнить</button>
+    </div>
+    <ul id="mainList">
+      <!-- Placeholder for main list -->
+    </ul>
     
     <script>
+      function performAction() {
+        const action = document.querySelector('input[name="action"]:checked').value;
+        const textInput = document.getElementById('textInput').value.trim();
+        const mainList = document.getElementById('mainList');
+        const selectedListItem = document.querySelector('ul li.selected');
     
+        if (action === 'add') {
+          const newItem = document.createElement('li');
+          newItem.textContent = textInput;
+          mainList.appendChild(newItem);
+        } else if (action === 'insert' && selectedListItem) {
+          const newItem = document.createElement('li');
+          newItem.textContent = textInput;
+          selectedListItem.parentNode.insertBefore(newItem, selectedListItem);
+        } else if (action === 'edit' && selectedListItem) {
+          selectedListItem.textContent = textInput;
+        } else if (action === 'addNested' && selectedListItem && !selectedListItem.querySelector('ul')) {
+          const nestedList = document.createElement('ul');
+          const nestedItem = document.createElement('li');
+          nestedItem.textContent = textInput;
+          nestedList.appendChild(nestedItem);
+          selectedListItem.appendChild(nestedList);
+        } else if (action === 'delete' && selectedListItem) {
+          selectedListItem.parentNode.removeChild(selectedListItem);
+        }
+      }
+    
+      document.addEventListener('click', function(event) {
+        const target = event.target;
+        if (target.tagName === 'LI') {
+          const selected = document.querySelector('ul li.selected');
+          if (selected) selected.classList.remove('selected');
+          target.classList.add('selected');
+        }
+      });
     </script>
-  </body>
+    </body>
+    </html>
+    
 </html>
