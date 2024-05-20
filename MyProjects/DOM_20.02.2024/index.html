@@ -2,10 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registration Form</title>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <h1>Registration Form</h1>
+    <form id="registrationForm">
+        <label for="login">Login:</label>
+        <input type="text" id="login" name="login" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
+        
+        <div id="gender">
+            <label for="gender" >Gender:</label>
+
+            <input type="radio" id="male" name="gender" value="male" checked>
+            <label for="male">Male</label>
+
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+        </div>
+        
+        
+        <div>
+            <label for="specialization">Specialization:</label>
+
+            <input type="radio" id="designer" name="specialization" value="designer" checked>
+            <label for="designer">Designer</label>
+
+            <input type="radio" id="programmer" name="specialization" value="programmer">
+            <label for="programmer">Programmer</label>
+
+            <input type="radio" id="admin" name="specialization" value="admin">
+            <label for="admin">Admin</label>
+        </div>
+        
+        <label for="position">Position:</label>
+        <select id="position" name="position" required>
+            <option value="">Select position</option>
+            <option value="Junior software engineer">Junior software engineer</option>
+            <option value="Software engineer">Software engineer</option>
+            <option value="Senior software engineer">Senior software engineer</option>
+            <option value="Team leader">Team leader</option>
+            <option value="Manager">Manager</option>
+        </select>
+        <br><br>
+
+        
+        <button type="submit">Register</button>
+    </form>
+    <div id="output"></div>
 </body>
 </html>
