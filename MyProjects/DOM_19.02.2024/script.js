@@ -1,86 +1,46 @@
-function firstTask() {
-  let tree = document.getElementById("tree");
-  let elements = tree.querySelectorAll(".element");
+function performAction() {
+  const action = document.querySelector('input[name="action"]:checked').value;
+  
+  const textAdd = document.getElementById('textAdd').value.trim();
+  const textInsert = document.getElementById('textInsert').value.trim();
+  const textEdit = document.getElementById('textEdit').value.trim();
+  const textAddNested = document.getElementById('textAddNested').value.trim();
+  const deleteRadio = document.getElementById('deleteRadio').value.trim();
 
-  elements.forEach(function (element) {
-    let text = element.querySelector(".text");
+  const mainList = document.getElementById('mainList');
+  const selectedListItem = document.querySelector('ul li.selected');
 
-    text.addEventListener("click", function () {
-      let innerList = element.querySelector(".inner");
-      if (innerList) {
-        innerList.classList.toggle("show");
-      }
-    });
-  });
-}
-
-function secondTask() {
-  for (let i = 0; i < books.length; i++) {
-    books[i].addEventListener("click", function (event) {
-      if (!event.ctrlKey && !event.shiftKey) {
-        clearSelection();
-      }
-      if (event.ctrlKey) {
-        console.log("ctrl");
-        toggleSelection(i);
-      } else if (event.shiftKey && previousClickedIndex !== -1) {
-        console.log("shift");
-        selectRange(previousClickedIndex, i);
-      } else {
-        console.log("default click");
-
-        clearSelection();
-        if (previousClickedIndex !== i) {
-          toggleSelection(i);
-          previousClickedIndex = i;
-        } else {
-          previousClickedIndex = null;
-        }
-      }
-    });
+  if (action === 'add') {
+    const newItem = document.createElement('li');
+    newItem.textContent = textAdd;
+    mainList.appendChild(newItem);
+  } else if (action === 'insert' && selectedListItem) {
+    const newItem = document.createElement('li');
+    newItem.textContent = textInsert;
+    selectedListItem.parentNode.insertBefore(newItem, selectedListItem);
+  } else if (action === 'edit' && selectedListItem) {
+    selectedListItem.textContent = textEdit;
+  } else if (action === 'addNested' && selectedListItem && !selectedListItem.querySelector('ul')) {
+    const nestedList = document.createElement('ul');
+    const nestedItem = document.createElement('li');
+    nestedItem.textContent = textAddNested;
+    nestedList.appendChild(nestedItem);
+    selectedListItem.appendChild(nestedList);
+  } else if (action === 'delete' && selectedListItem) {
+    selectedListItem.parentNode.removeChild(selectedListItem);
   }
 }
 
-function clearSelection() {
-  for (const index of selectedIndices) {
-    books[index].classList.remove("selected");
+document.addEventListener('click', function(event) {
+  const target = event.target;
+  if (target.tagName === 'LI') {
+    const selected = document.querySelector('ul li.selected');
+    if (selected) selected.classList.remove('selected');
+    else if(selected != target)
+    target.classList.add('selected');
+    else
+    {
+    target.classList.remove('selected');
+    } 
   }
-  selectedIndices.clear();
-}
-
-function toggleSelection(index) {
-  if (selectedIndices.has(index)) {
-    books[index].classList.remove("selected");
-    selectedIndices.delete(index);
-  } else {
-    books[index].classList.add("selected");
-    selectedIndices.add(index);
-  }
-}
-
-function selectRange(start, end) {
-  const startIndex = Math.min(start, end);
-  const endIndex = Math.max(start, end);
-  for (let i = startIndex; i <= endIndex; i++) {
-    books[i].classList.add("selected");
-    selectedIndices.add(i);
-  }
-}
-
-function thirdTask() {
-  resizer.addEventListener("mousedown", (e) => {
-    isResizing = true;
-    document.addEventListener("mousemove", resize);
-    document.addEventListener("mouseup", () => {
-      isResizing = false;
-      document.removeEventListener("mousemove", resize);
-    });
-  });
-}
-
-function resize(e) {
-  if (isResizing) {
-    resizable.style.width = e.pageX - resizable.offsetLeft + "px";
-    resizable.style.height = e.pageY - resizable.offsetTop + "px";
-  }
-}
+});
