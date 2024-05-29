@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      display: block;
+      justify-content: center;
+      align-items: center;
+      
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      width: 500px;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px;
+      width: 20%;
+      box-sizing: border-box;
+    }
+
+   
+
+    #colorInput {
+        height: 50px;
+    }
+
+    button{
+      cursor: pointer;
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="input-group">
+        <label for="colorInput">Text Color:</label>
+        <input type="color" id="colorInput">
+    </div>
+    <div class="input-group">
+        <label for="colorInput">Ink Percent:</label>
+
+        <span id="inkPercent">100%</span>
+
+    </div>
+
+    <label for="textInput">Text:</label>
+    <input type="text" id="textInput" placeholder="Enter text">
+    <button id="printBtn">Print Text</button>
+    <button id="refillBtn">Refill Ink</button>
+    <button id="clearBtn">Clear</button>
+  </div>
+  <div class="container" id="output">
+  </div>
+<script src="script.js"></script>
+</body>
+
+</html>
