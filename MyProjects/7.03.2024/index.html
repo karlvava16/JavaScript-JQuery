@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title>Регистрационная форма</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <form name="registrationForm">
+            <table class="form_wrapper" cellspacing="1">
+                <thead>
+                    <tr>
+                        <td colspan="2" align="center">
+                            Регистрация на сервере:
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Логин:</td>
+                        <td>
+                            <input
+                                id="loginInput"
+                                size="26"
+                                type="text"
+                                name="userLogin"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Пароль:</td>
+                        <td>
+                            <input
+                                id="passwordInput"
+                                size="26"
+                                type="password"
+                                name="userPassword"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Подтверждение:</td>
+                        <td>
+                            <input
+                                id="confirmPasswordInput"
+                                size="26"
+                                type="password"
+                                name="userPasswordConfirm"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Полное имя (ФИО):</td>
+                        <td>
+                            <input
+                                id="fullNameInput"
+                                size="26"
+                                type="text"
+                                name="userFullName"
+                            />
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td>Пол:</td>
+                        <td>
+                            <input
+                                type="radio"
+                                name="genderOption"
+                                value="male"
+                            />мужской<br />
+                            <input
+                                type="radio"
+                                name="genderOption"
+                                value="female"
+                            />женский
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td>
+                            Иностранные<br />
+                            языки:
+                        </td>
+                        <td>
+                            <input
+                                type="checkbox"
+                                name="languageOption1"
+                            />Английский<br />
+                            <input
+                                type="checkbox"
+                                name="languageOption2"
+                            />Немецкий<br />
+                            <input
+                                type="checkbox"
+                                name="languageOption3"
+                            />Французский<br />
+                            <input
+                                type="checkbox"
+                                name="languageOption4"
+                            />Испанский<br />
+                            <input
+                                type="checkbox"
+                                name="languageOption5"
+                            />Итальянский<br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Сфера деятельности:</td>
+                        <td>
+                            <select name="workField">
+                                <option value="0">обслуживание</option>
+                                <option value="1" selected>образование</option>
+                                <option value="2">медицина</option>
+                                <option value="3">наука</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>e-mail:</td>
+                        <td>
+                            <input size="26" type="text" name="emailAddress" />
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td>
+                            Дополнительная<br />
+                            информация:
+                        </td>
+                        <td>
+                            <textarea
+                                name="additionalInfo"
+                                cols="20"
+                                rows="5"
+                            ></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input
+                                id="submitButton"
+                                type="button"
+                                value="Готово"
+                            />
+                            <input type="reset" value="Сброс" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <script src="script.js"></script>
+    </body>
+</html>
