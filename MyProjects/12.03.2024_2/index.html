@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random String Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Random String Generator</h1>
+
+      <div id="input-container">
+        <div>
+          <label for="string-length">String Length:</label>
+          <input type="number" id="string-length" min="1" value="10" />
+        </div>
+        <div>
+          <label for="uppercase-checkbox">Uppercase Letters:</label>
+          <input type="checkbox" id="uppercase-checkbox" checked />
+        </div>
+        <div>
+          <label for="lowercase-checkbox">Lowercase Letters:</label>
+          <input type="checkbox" id="lowercase-checkbox" checked />
+        </div>
+        <div>
+          <label for="digits-checkbox">Digits:</label>
+          <input type="checkbox" id="digits-checkbox" checked />
+        </div>
+        <button id="generate-button">Generate</button>
+      </div>
+
+      <div id="result-container">
+        <p>Generated String:</p>
+        <span id="generated-string"></span>
+        <button id="copy-button">Copy</button>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
