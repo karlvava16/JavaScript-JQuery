@@ -1,0 +1,84 @@
+{
+  "questions": [
+    {
+      "questionText": "What is 2 + 2?",
+      "options": [
+        { "text": "4", "value": "correct" },
+        { "text": "5", "value": "incorrect" },
+        { "text": "3", "value": "incorrect" }
+      ]
+    },
+    {
+      "questionText": "Which is the capital of France?",
+      "options": [
+        { "text": "Paris", "value": "correct" },
+        { "text": "London", "value": "incorrect" },
+        { "text": "Berlin", "value": "incorrect" }
+      ]
+    },
+    {
+      "questionText": "Who is the author of 'Harry Potter' series?",
+      "options": [
+        { "text": "J.K. Rowling", "value": "correct" },
+        { "text": "Stephen King", "value": "incorrect" },
+        { "text": "George R.R. Martin", "value": "incorrect" }
+      ]
+    },
+    {
+      "questionText": "Which planet is known as the Red Planet?",
+      "options": [
+        { "text": "Mars", "value": "correct" },
+        { "text": "Venus", "value": "incorrect" },
+        { "text": "Jupiter", "value": "incorrect" }
+      ]
+    },
+    {
+      "questionText": "What is the largest mammal on Earth?",
+      "options": [
+        { "text": "Blue Whale", "value": "correct" },
+        { "text": "Elephant", "value": "incorrect" },
+        { "text": "Giraffe", "value": "incorrect" }
+      ]
+    },
+    {
+      "questionText": "Who painted the Mona Lisa?",
+      "options": [
+        { "text": "Leonardo da Vinci", "value": "correct" },
+        { "text": "Pablo Picasso", "value": "incorrect" },
+        { "text": "Vincent van Gogh", "value": "incorrect" }
+      ]
+    },
+    {
+      "questionText": "Which country is famous for Mount Everest?",
+      "options": [
+        { "text": "Nepal", "value": "correct" },
+        { "text": "India", "value": "incorrect" },
+        { "text": "China", "value": "incorrect" }
+      ]
+    },
+    {
+      "questionText": "Who wrote the play 'Romeo and Juliet'?",
+      "options": [
+        { "text": "William Shakespeare", "value": "correct" },
+        { "text": "Jane Austen", "value": "incorrect" },
+        { "text": "Charles Dickens", "value": "incorrect" }
+      ]
+    },
+    {
+      "questionText": "What is the chemical symbol for water?",
+      "options": [
+        { "text": "H2O", "value": "correct" },
+        { "text": "CO2", "value": "incorrect" },
+        { "text": "O2", "value": "incorrect" }
+      ]
+    },
+    {
+      "questionText": "Who discovered penicillin?",
+      "options": [
+        { "text": "Alexander Fleming", "value": "correct" },
+        { "text": "Marie Curie", "value": "incorrect" },
+        { "text": "Isaac Newton", "value": "incorrect" }
+      ]
+    }
+  ]
+}
