@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>15 Puzzle Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+  </head>
+  <body>
+    <div id="game-container">
+      <div style="margin: 30px">
+        <button id="new-game">New Game</button>
+        <div id="timer">Time: <span id="time">0</span> seconds</div>
+      </div>
+      <div id="board"></div>
+    </div>
+
+    <div id="dialog" title="Puzzle Solved!" style="display: none">
+      <p id="dialog-message"></p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
