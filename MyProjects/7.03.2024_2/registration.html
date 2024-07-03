@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style2.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Registration</h1>
+      <form id="reg-form">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <span class="error-message" id="email-error"
+          >Invalid email address</span
+        >
+
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+          required
+          title="Password must be at least 6 characters long and contain at least one digit, one lowercase letter, and one uppercase letter"
+        />
+        <span class="error-message" id="password-error"
+          >Password must be at least 6 characters long and contain at least one
+          digit, one lowercase letter, and one uppercase letter</span
+        >
+
+        <label for="repeat">Repeat Password:</label>
+        <input type="password" id="repeat" name="repeat" required />
+        <span class="error-message" id="repeat-error"
+          >Passwords do not match</span
+        >
+
+        <button type="submit" class="button">Sign Up</button>
+      </form>
+    </div>
+
+    <script src="script2.js" defer></script>
+  </body>
+</html>

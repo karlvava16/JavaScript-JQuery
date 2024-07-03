@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="profile-info">
+      <div class="sign-info">
+        <span id="title-user"></span>
+        <button id="logout-button" class="logout-button">Logout</button>
+      </div>
+      <h1>User Profile</h1>
+      <form id="profile-form">
+        <div class="form-row">
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" required />
+        </div>
+
+        <div class="form-row">
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" required />
+        </div>
+
+        <div class="form-row">
+          <label for="birthDate">Date of Birth:</label>
+          <input type="date" id="birthDate" name="birthDate" required />
+          <span class="error-message" id="birthDate-error"
+            >Please enter a valid date</span
+          >
+        </div>
+
+        <div class="form-row">
+          <label for="gender">Gender:</label>
+          <select id="gender" name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="phoneNumber">Phone Number:</label>
+          <input
+            type="tel"
+            id="phoneNumber"
+            name="phoneNumber"
+            pattern="[0-9]{10}"
+            required
+          />
+          <span class="error-message" id="phoneNumber-error"
+            >Please enter a valid phone number</span
+          >
+        </div>
+
+        <div class="form-row">
+          <label for="skype">Skype:</label>
+          <input type="text" id="skype" name="skype" required />
+        </div>
+
+        <button type="submit" class="button">Save</button>
+      </form>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
