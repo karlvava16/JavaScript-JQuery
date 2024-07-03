@@ -1,0 +1,54 @@
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 20px;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* User list styles */
+#userList {
+  margin-bottom: 20px;
+}
+
+.user {
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.user:hover {
+  background-color: #e0e0e0;
+}
+
+/* User info styles */
+#userInfo {
+  margin-bottom: 20px;
+}
+
+#userInfo h2 {
+  margin-bottom: 10px;
+}
+
+/* User posts styles */
+#userPosts {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+#userPosts div {
+  margin-bottom: 10px;
+}
+
+#userPosts h3 {
+  margin-bottom: 5px;
+}
